@@ -12,10 +12,10 @@
     <div style="font-style: italic;">for</div>
     <div class="sub_heading">Indian Ruppee Notes ₹</div>
     <video autoplay playsinline muted id="webcam" width="150" height="150"></video>
-    
-    <div class = "load_div">
-        <span id = "load_progress_span" class="load_progress"></span>
-        <span id = "load_span">LOADING...</span>
+
+    <div class="load_div">
+        <span id="load_progress_span" class="load_progress"></span>
+        <span id="load_span">LOADING...</span>
     </div>
     <br>
     <!-- <button id="pred_btn" disabled onclick="predict_value()">PREDICT</button><br><br> -->
@@ -51,7 +51,7 @@
                 if (val[0][i] > 0.9) valid = true;
                 if (val[0][i] > val[0][j]) j = i;
             }
-            var denom = ["10", "100", "20", "200", "2000", "50", "500"]
+            var denom = ["10", "10", "20", "20", "50", "50", "100", "100", "200", "500", "2000"]
             if (valid)
                 result = "₹ " + denom[j]
             else
@@ -60,9 +60,9 @@
 
         }
 
-        function updateProgress(loadFraction){
-            load_span.innerHTML = parseInt(loadFraction*100) +"%"
-            load_progress_span.style.width = parseInt(loadFraction*100) +"%"
+        function updateProgress(loadFraction) {
+            load_span.innerHTML = parseInt(loadFraction * 100) + "%"
+            load_progress_span.style.width = parseInt(loadFraction * 100) + "%"
         }
 
     </script>
