@@ -5,3 +5,12 @@ video {
     height: 60vh;
     width: 90vw;
 }
+.main_heading {
+    font-size: xx-large;
+    font-weight: bold;
+}
+
+.sub_heading {
+    font-size: large;
+
+}

@@ -2,14 +2,20 @@
 
 <head>
     <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs"></script>
-    <meta name="viewport" content="width=device-width, initial-scale=1"/>
-    <link rel="stylesheet" href="style.css"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" href="style.css" />
 </head>
 
 <body>
+    <div class="main_heading">Money Valuator</div>
+    <div class="sub_heading">ML Based Currency Value Detection</div>
+    <div style="font-style: italic;">for</div>
+    <div class="sub_heading">Indian Ruppee Notes ₹</div>
     <video autoplay playsinline muted id="webcam" width="150" height="150"></video>
-    <br><br>
-    <div id="load_div">LOADING...</div>
+    <br>
+    <div id="load_div">
+        <span id = "load_span">LOADING...</span>
+    </div>
     <br>
     <!-- <button id="pred_btn" disabled onclick="predict_value()">PREDICT</button><br><br> -->
     <div id="res" style="font-weight: bold; font-size: 40px;"></div>
@@ -17,14 +23,14 @@
         var model, webcam;
         const webcamElement = document.getElementById('webcam');
         const initialise = async () => {
-            model = await tf.loadLayersModel('tfjs_model/model.json');
+            model = await tf.loadLayersModel('tfjs_model/model.json', { onProgress: (loadFraction) => updateProgress(loadFraction) });
             webcam = await tf.data.webcam(webcamElement, { facingMode: 'environment' });
-            load_div.innerHTML = "Good to GO"
+            load_span.innerHTML = "Good to GO"
             //pred_btn.disabled = false;
             //const img = await webcam.capture()
             //console.log(img)
 
-            setInterval(predict_value , 1000)
+            setInterval(predict_value, 1000)
 
         };
 
@@ -51,6 +57,10 @@
                 result = "Cannot Predict"
             res.innerHTML = result;
 
+        }
+
+        function updateProgress(loadFraction){
+            load_span.innerHTML = (loadFraction*100) +"%"
         }
 
     </script>
