@@ -24,7 +24,7 @@
         var model, webcam;
         const webcamElement = document.getElementById('webcam');
         const initialise = async () => {
-            model = await tf.loadLayersModel('tfjs-new/model.json', { onProgress: (loadFraction) => updateProgress(loadFraction) });
+            model = await tf.loadLayersModel('tfjs_model/model.json', { onProgress: (loadFraction) => updateProgress(loadFraction) });
             webcam = await tf.data.webcam(webcamElement, { facingMode: 'environment' });
             load_span.innerHTML = "Good to GO"
             //pred_btn.disabled = false;
