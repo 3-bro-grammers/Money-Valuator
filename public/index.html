@@ -11,7 +11,7 @@
     <div class="sub_heading">ML Based Currency Value Detection</div>
     <div style="font-style: italic;">for</div>
     <div class="sub_heading">Indian Ruppee Notes ₹</div>
-    <video autoplay playsinline muted id="webcam" width="150" height="150"></video>
+    <video autoplay playsinline muted id="webcam" width="200" height="100"></video>
 
     <div class="load_div">
         <span id="load_progress_span" class="load_progress"></span>
@@ -24,7 +24,7 @@
         var model, webcam;
         const webcamElement = document.getElementById('webcam');
         const initialise = async () => {
-            model = await tf.loadLayersModel('tfjs_model/model.json', { onProgress: (loadFraction) => updateProgress(loadFraction) });
+            model = await tf.loadLayersModel('tfjs-new/model.json', { onProgress: (loadFraction) => updateProgress(loadFraction) });
             webcam = await tf.data.webcam(webcamElement, { facingMode: 'environment' });
             load_span.innerHTML = "Good to GO"
             //pred_btn.disabled = false;
@@ -51,6 +51,7 @@
                 if (val[0][i] > 0.9) valid = true;
                 if (val[0][i] > val[0][j]) j = i;
             }
+            
             var denom = ["10", "10", "20", "20", "50", "50", "100", "100", "200", "500", "2000"]
             if (valid)
                 result = "₹ " + denom[j]
